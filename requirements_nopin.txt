@@ -1,0 +1,31 @@
+datasets
+einops
+gpustat
+hydra-core
+higher
+importlib-metadata
+matplotlib
+nltk
+numpy
+omegaconf
+pandas
+PyYAML
+scikit-learn
+scipy
+sentence-transformers
+tokenizers
+torch
+tqdm
+transformers==4.46.2  # transformers.modeling_utils 需要其中的函数
+openai
+peft
+timm
+iopath
+opencv-python
+fairscale
+av
+qwen_vl_utils
+zhipuai
+sentencepiece
+
+rouge  # from rouge import Rouge
