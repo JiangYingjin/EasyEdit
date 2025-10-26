@@ -100,6 +100,14 @@ class BaseEditor:
                 self.model = AutoModelForCausalLM.from_pretrained(self.model_name, **model_kwargs)
                 self.tok = AutoTokenizer.from_pretrained(self.model_name)
                 self.tok.pad_token_id = self.tok.eos_token_id
+                LLAMA_CHAT_TEMPLATE = (
+    "{% for message in messages %}"
+    "{{ '<|begin_of_text|>' }}"
+    "{{ '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n' + message['content'] + '<|eot_id|>' }}"
+    "{% endfor %}"
+    "{{ '<|start_header_id|>assistant<|end_header_id|>\n' if add_generation_prompt else '' }}"
+)
+                self.tok.chat_template = LLAMA_CHAT_TEMPLATE
             elif 'baichuan' in self.model_name.lower():
                 self.model = AutoModelForCausalLM.from_pretrained(self.model_name, **model_kwargs, trust_remote_code=True)
                 self.tok = AutoTokenizer.from_pretrained(self.model_name,trust_remote_code=True)

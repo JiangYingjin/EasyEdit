@@ -41,6 +41,16 @@ tokenizer = AutoTokenizer.from_pretrained(model_id)
 tokenizer.pad_token_id = tokenizer.eos_token_id
 tokenizer.padding_side = "left"
 
+# Set chat template for Llama 3.1
+LLAMA_CHAT_TEMPLATE = (
+    "{% for message in messages %}"
+    "{{ '<|begin_of_text|>' }}"
+    "{{ '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n' + message['content'] + '<|eot_id|>' }}"
+    "{% endfor %}"
+    "{{ '<|start_header_id|>assistant<|end_header_id|>\n' if add_generation_prompt else '' }}"
+)
+tokenizer.chat_template = LLAMA_CHAT_TEMPLATE
+
 
 # use chat template to generate responses
 def evaluate_chat_template(model, Evaluation_prompts, Evaluation_metrics, device=0):
