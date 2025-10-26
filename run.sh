@@ -9,7 +9,10 @@
 #SBATCH --open-mode=append
 #SBATCH --time=00:15:00
 
+echo "\n\n[$(date '+%Y-%m-%d %H:%M:%S')] Job started.\n"
+
 . ~/.zshrc
-# conda activate easyedit
 conda activate ke
 python run.py
+
+echo "\n[$(date '+%Y-%m-%d %H:%M:%S')] Job finished.\n\n"

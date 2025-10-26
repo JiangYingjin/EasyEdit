@@ -1,5 +1,5 @@
 alg_name: "WISE"
-model_name: "/data/user/yjiang717/data/model/Llama-3.1-8B"
+model_name: "/data/user/yjiang717/data/model/Llama-3.1-8B-Instruct"
 
 device: 0
 

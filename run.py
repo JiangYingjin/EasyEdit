@@ -23,7 +23,7 @@ import torch.cuda
 
 logger.log("Import dependencies finished")
 # model_id = "meta-llama/Llama-3.1-8B"
-model_id = "/data/user/yjiang717/data/model/Llama-3.1-8B"
+model_id = "/data/user/yjiang717/data/model/Llama-3.1-8B-Instruct"
 pipeline = pipeline(
     "text-generation",
     model=model_id,
@@ -35,7 +35,6 @@ logger.log("Pipeline initialized")
 logger.log("Generating sample response")
 result = pipeline("Who is the current President of the United States?")
 logger.log(f"Response generated: {result}")
-
 
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 tokenizer.pad_token_id = tokenizer.eos_token_id
